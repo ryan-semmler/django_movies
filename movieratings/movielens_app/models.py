@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Rater(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     gender = models.CharField(max_length=1)
     occupation = models.CharField(max_length=25)
     age = models.IntegerField()
@@ -20,3 +22,11 @@ class Rating(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     rater = models.ForeignKey(Rater, on_delete=models.CASCADE)
     timestamp = models.IntegerField()
+
+#
+# class User(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     username = models.CharField(max_length=50)
+#     email = models.CharField(max_length=50)
+#     password = models.CharField(max_length=30)
+#     rater = models.OneToOneField(Rater, on_delete=models.CASCADE)
