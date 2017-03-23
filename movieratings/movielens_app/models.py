@@ -16,6 +16,9 @@ class Movie(models.Model):
     release_date = models.CharField(max_length=15)
     id = models.AutoField(primary_key=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Rating(models.Model):
     rating = models.IntegerField()
